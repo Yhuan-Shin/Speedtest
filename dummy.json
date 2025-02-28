@@ -1,0 +1,38 @@
+{
+    "download": {
+        "bandwidth": 12345678,
+        "bytes": 123456789,
+        "elapsed": 12345
+    },
+    "upload": {
+        "bandwidth": 87654321,
+        "bytes": 987654321,
+        "elapsed": 54321
+    },
+    "ping": {
+        "jitter": 12.34,
+        "latency": 56.78
+    },
+    "packetLoss": 0.0,
+    "isp": "Dummy ISP",
+    "interface": {
+        "internalIp": "192.168.1.1",
+        "name": "eth0",
+        "macAddr": "00:00:5e:00:53:af",
+        "isVpn": false,
+        "externalIp": "203.0.113.1"
+    },
+    "server": {
+        "id": 12345,
+        "host": "dummy.server.com",
+        "port": 8080,
+        "name": "Dummy Server",
+        "location": "Dummy City",
+        "country": "Dummy Country",
+        "ip": "203.0.113.2"
+    },
+    "result": {
+        "id": "12345678-1234-1234-1234-123456789012",
+        "url": "http://dummy.result.url"
+    }
+}

@@ -1,12 +1,23 @@
 #!/bin/bash
 
+DEBUG=true
 curl -sL https://firebase.tools | bash
-FIREBASE_TOKEN="1//0eeQfSXesVYrpCgYIARAAGA4SNwF-L9IrIBwCtqW0jIMCBgI7GDlPmF2kwjRBUmGwcpLYoIX_7pnXebz4tpNUKUpU2xtaING0-qo"
-PROJECT_ID="yhuanapp"
-COLLECTION_NAME="default"
+# Run the speed test and send the output directly to the API
+API_URL="https://speedtest-839953080884.us-central1.run.app"
 
+# running the API locally
+# API_URL="http://localhost:8080/store-speedtest"
 
-speedtest-cli --json > file.json
-curl -X POST -H "Authorization: Bearer $FIREBASE_TOKEN" -H "Content-Type: application/json" -d file.json "https://firestore.googleapis.com/v1/projects/$PROJECT_ID/databases/(default)/documents/$COLLECTION_NAME"
-echo "Speed test done!"
+if [ "$DEBUG" = true ]; then
+    echo "Debug mode is on"
+    echo "Sending dummy data to $API_URL"
+    dummy_data=$(cat "C:\Users\ICTD\Desktop\Speedtest\dummy.json")
+    echo "$dummy_data" | curl -X POST -H "Content-Type: application/json" -d @- "$API_URL"
+else
+    echo "Running speed test on $(date '+%I:%M:%S %p')"
+    echo "Convert into JSON format"
+    echo "Sending json data to $API_URL"
+    speedtest --format=json-pretty | curl -X POST -H "Content-Type: application/json" -d @- "$API_URL"
+fi
 
+echo "Done"
