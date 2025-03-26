@@ -2,8 +2,13 @@
 
 DEBUG=true
 curl -sL https://firebase.tools | bash
+
+set -a
+source .env
+set +a
+export $(grep -v "^#" .env | xargs)
 # Run the speed test and send the output directly to the API
-API_URL="https://speedtest-839953080884.us-central1.run.app"
+API_URL= $API_URL
 
 # running the API locally
 # API_URL="http://localhost:8080/store-speedtest"
