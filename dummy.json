@@ -1,7 +1,7 @@
 {
     "download": {
-        "bandwidth": 12345678,
-        "bytes": 123456789,
+        "bandwidth": "123456789",
+        "bytes": "123456789",
         "elapsed": 12345
     },
     "upload": {

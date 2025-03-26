@@ -3,15 +3,12 @@
 DEBUG=true
 curl -sL https://firebase.tools | bash
 
-set -a
-source .env
-set +a
-export $(grep -v "^#" .env | xargs)
-# Run the speed test and send the output directly to the API
-API_URL= $API_URL
 
-# running the API locally
-# API_URL="http://localhost:8080/store-speedtest"
+
+export $(grep -v '^#' C:/Users/ICTD/Desktop/Speedtest/.env | xargs -0)
+
+API_URL= $TEST
+
 
 if [ "$DEBUG" = true ]; then
     echo "Debug mode is on"
@@ -25,4 +22,3 @@ else
     speedtest --format=json-pretty | curl -X POST -H "Content-Type: application/json" -d @- "$API_URL"
 fi
 
-echo "Done"
